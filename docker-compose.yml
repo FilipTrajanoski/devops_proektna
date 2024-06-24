@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: emt-lab
+      POSTGRES_USER: emt
+      POSTGRES_PASSWORD: emt123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  springboot:
+    image: filiptrajanoski/devops_proektna:latest
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/emt-lab
+      SPRING_DATASOURCE_USERNAME: emt
+      SPRING_DATASOURCE_PASSWORD: emt123
+    ports:
+      - "8080:8080"
+
+  react:
+    image: filiptrajanoski/devops_proektna_frontend:latest
+    ports:
+      - "3000:80"
+    depends_on:
+      - springboot
+
+volumes:
+  postgres_data:
