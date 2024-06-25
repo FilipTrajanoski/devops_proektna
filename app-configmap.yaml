@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: devops-proektna-namespace
+data:
+  SPRING_DATASOURCE_URL: jdbc:postgresql://emt-lab-db:5432/emt-lab
+  SPRING_DATASOURCE_USERNAME: lab

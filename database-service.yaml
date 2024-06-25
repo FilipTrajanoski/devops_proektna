@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: emt-lab-db
+  namespace: devops-proektna-namespace
+spec:
+  ports:
+    - port: 5432
+      targetPort: 5432
+  selector:
+    app: emt-lab-db

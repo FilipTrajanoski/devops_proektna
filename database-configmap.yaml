@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-config
+  namespace: devops-proektna-namespace
+data:
+  POSTGRES_DB: emt-lab
+  POSTGRES_USER: lab
