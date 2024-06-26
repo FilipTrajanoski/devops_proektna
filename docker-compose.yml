@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  postgres:
+  emt-lab-db:
     image: postgres:13
     environment:
       POSTGRES_DB: emt-lab
@@ -15,9 +15,9 @@ services:
   springboot:
     image: filiptrajanoski/devops_proektna:latest
     depends_on:
-      - postgres
+      - emt-lab-db
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/emt-lab
+      SPRING_DATASOURCE_URL: jdbc:postgresql://emt-lab-db:5432/emt-lab
       SPRING_DATASOURCE_USERNAME: emt
       SPRING_DATASOURCE_PASSWORD: emt123
     ports:

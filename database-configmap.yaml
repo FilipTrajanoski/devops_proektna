@@ -5,4 +5,4 @@ metadata:
   namespace: devops-proektna-namespace
 data:
   POSTGRES_DB: emt-lab
-  POSTGRES_USER: lab
+  POSTGRES_USER: emt

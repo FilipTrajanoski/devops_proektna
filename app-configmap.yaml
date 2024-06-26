@@ -5,4 +5,4 @@ metadata:
   namespace: devops-proektna-namespace
 data:
   SPRING_DATASOURCE_URL: jdbc:postgresql://emt-lab-db:5432/emt-lab
-  SPRING_DATASOURCE_USERNAME: lab
+  SPRING_DATASOURCE_USERNAME: emt
