@@ -1,4 +1,4 @@
-import axios from "../custom-axios/axios";
+import {secondInstance as axios} from "../custom-axios/axios";
 
 const EShopService = {
     fetchCountries: () => {
