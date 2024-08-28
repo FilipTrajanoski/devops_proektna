@@ -60,6 +60,3 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/devops_proektna:latest
 
-      - name: Deploy using Docker Compose
-        run: |
-          docker-compose -f ./docker-compose.yml up -d
