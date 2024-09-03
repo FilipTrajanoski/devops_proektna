@@ -1,55 +1,79 @@
-import {secondInstance as axios} from "../custom-axios/axios";
+import {firstInstance, secondInstance} from "../custom-axios/axios";
 
 const EShopService = {
     fetchCountries: () => {
-        return axios.get("/countries");
+        return firstInstance.get("/countries")
+            .catch(() => secondInstance.get("/countries"));
     },
     addCountry: (name, continent) => {
-        return axios.post("/countries/add", {
+        return firstInstance.post("/countries/add", {
             "name": name,
             "continent": continent
-        });
+        }).catch(() => secondInstance.post("/countries/add", {
+            "name": name,
+            "continent": continent
+        }));
     },
     fetchHosts: () => {
-        return axios.get("/hosts");
+        return firstInstance.get("/hosts")
+            .catch(() => secondInstance.get("/hosts"));
     },
     addHost: (name, surname, country) => {
-        return axios.post("/hosts/add", {
+        return firstInstance.post("/hosts/add", {
             "name": name,
             "surname": surname,
             "country": country
-        });
+        }).catch(() => secondInstance.post("/hosts/add", {
+            "name": name,
+            "surname": surname,
+            "country": country
+        }));
     },
     fetchAccommodations: () => {
-        return axios.get("/accommodations");
+        return firstInstance.get("/accommodations")
+            .catch(() => secondInstance.get("/accommodations"));
     },
     addAccommodation: (name, category, host, numRooms) => {
-        return axios.post("/accommodations/add",{
+        return firstInstance.post("/accommodations/add", {
             "name": name,
             "category": category,
             "host": host,
             "numRooms": numRooms
-        });
+        }).catch(() => secondInstance.post("/accommodations/add", {
+            "name": name,
+            "category": category,
+            "host": host,
+            "numRooms": numRooms
+        }));
     },
     editAccommodation: (id, name, category, host, numRooms) => {
-        return axios.put(`/accommodations/edit/${id}`,{
+        return firstInstance.put(`/accommodations/edit/${id}`, {
             "name": name,
             "category": category,
             "host": host,
             "numRooms": numRooms
-        });
+        }).catch(() => secondInstance.put(`/accommodations/edit/${id}`, {
+            "name": name,
+            "category": category,
+            "host": host,
+            "numRooms": numRooms
+        }));
     },
     deleteAccommodation: (id) => {
-        return axios.delete(`/accommodations/delete/${id}`);
+        return firstInstance.delete(`/accommodations/delete/${id}`)
+            .catch(() => secondInstance.delete(`/accommodations/delete/${id}`));
     },
     getAccommodation: (id) => {
-        return axios.get(`/accommodations/${id}`);
+        return firstInstance.get(`/accommodations/${id}`)
+            .catch(() => secondInstance.get(`/accommodations/${id}`));
     },
     rentAccommodation: (id) => {
-        return axios.put(`/accommodations/rent/${id}`);
+        return firstInstance.put(`/accommodations/rent/${id}`)
+            .catch(() => secondInstance.put(`/accommodations/rent/${id}`));
     },
     getCategories: () => {
-        return axios.get("/categories");
+        return firstInstance.get("/categories")
+            .catch(() => secondInstance.get("/categories"));
     }
 }
 
